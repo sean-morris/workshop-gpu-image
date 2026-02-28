@@ -1,6 +1,15 @@
 ARG PANGEO_BASE_IMAGE_TAG=2026.01.30
 FROM pangeo/pytorch-notebook:${PANGEO_BASE_IMAGE_TAG}
 
+# 1. Switch to root to install system-level C/C++ compilers
+USER root
+RUN apt-get update && \
+    apt-get install -y build-essential && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# 2. Switch back to the default Pangeo user (jovyan)
+USER ${NB_USER:-jovyan}
 
 # Copy and install environment.yml
 COPY environment.yml /tmp/environment.yml
