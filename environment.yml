@@ -3,6 +3,7 @@ channels:
   - conda-forge
 
 dependencies:
+  - cuda-cudart-dev
   - pip
   - pip:
       - transformers==4.46.3
