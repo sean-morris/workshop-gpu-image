@@ -9,5 +9,8 @@ COPY environment.yml /tmp/environment.yml
 RUN mamba env update -f /tmp/environment.yml --name notebook && \
     mamba clean --all -f -y
 
-RUN /srv/conda/envs/notebook/bin/python -m pip install llama-cpp-python \
-    --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu125
+    # Set environment variables to force pip to build with CUDA
+ENV CMAKE_ARGS="-DGGML_CUDA=on"
+ENV FORCE_CMAKE=1
+
+RUN /srv/conda/envs/notebook/bin/python -m pip install llama-cpp-python
