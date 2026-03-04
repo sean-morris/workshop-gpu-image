@@ -24,3 +24,6 @@ dependencies:
       - gradio
       - docutils<0.20
       - onnxruntime
+      - chromadb 
+      - langchain-text-splitters 
+      - langchain-community
