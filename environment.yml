@@ -30,3 +30,4 @@ dependencies:
       - langchain-community
       - datasets
       - gpt4all
+      - gguf
