@@ -30,6 +30,6 @@ dependencies:
       - langchain-community
       - langchain-huggingface 
       - langchain-chroma
-      - datasets 
-      - gpt4all
+      # - datasets 
+      # - gpt4all
       - gguf
